@@ -1,0 +1,26 @@
+#{extends 'mainA.html' /}
+#{set title:'Home' /}
+
+<meta charset="utf-8">
+			
+<div class="row page-title-header">
+	<div class="col-12">
+		<div class="page-header">
+			<h4 class="page-title">Bem vindo(a) ao SAC</h4>
+		</div>
+	</div>
+	<div class="container">
+  		<div class="row">
+  			#{list items:turmas, as: 'turma'}
+    		<div class="col-md-4">
+      			<div class="card card-3">
+        			<center>
+        				<h3>${turma.nome}</h3>
+        			</center>
+        			<p></p>
+      			</div>
+    		</div>
+    		#{/list}
+  		</div>
+	</div>
+</div>

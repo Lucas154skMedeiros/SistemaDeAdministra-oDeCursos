@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+	<meta charset="utf-8">
+
+<h1>Formulário do Aluno</h1>
+
+<form action="@{Alunos.salvar()}" method="post">
+	<input type="hidden" name="aluno.id" value="${aluno?.id}"><br>
+	<div class="col-md-12 grid-margin stretch-card">
+     <div class="card">
+      <div class="card-body">
+       <h4 class="card-title">Preencha o formulário</h4>
+        <p class="card-description"> Com as seguintes informações:  </p>
+         <form class="forms-sample">
+          <div class="form-group">
+           <label for="exampleInputName1">Nome:</label>
+            <input type="text" class="form-control" name="aluno.nome" value="${aluno?.nome}"><br>
+           </div>
+              <div class="form-group">
+               <label for="exampleInputEmail3">Matricula:</label>
+                <input type="text" class="form-control" name="aluno.matricula" value="${aluno?.matricula}"><br>
+               </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword4">Senha:</label>
+                   <input type="password" class="form-control" name="senha" value=""><br>
+                 </div>
+                   <button type="submit" class="btn btn-success mr-2">Cadastrar</button>
+                    <button class="btn btn-light">Cancelar</button>
+                   </form>
+                  </div>
+                 </div>
+                </div>

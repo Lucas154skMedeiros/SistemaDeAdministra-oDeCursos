@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+	<meta charset="utf-8">
+
+<h1>Listagem das Turmas</h1>
+
+<form action="@{Turmas.listar}">
+	<input name = "buscar">
+	<button>Pesquisar</button>
+</form>
+
+<div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Turmas</h4>
+                    <p class="card-description"> Informações:</p>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>  </th>
+                          <th> Nome </th>
+                          <th> Codigo </th>
+                          <th> Opções </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      #{list items:turmas, as: 'turma'}
+                        <tr class="table-success">
+                          <td> # </td>
+                          <td> ${turma.nome} </td>
+                          <td> ${turma.codigo} </td>
+                          <td> <a href="@{Turmas.detalhes(turma.id)}">
+                          <button class="mb-2 mr-2 border-0 btn-transition btn btn-outline-danger">Detalhes</button></a>  
+                          <a href="@{Turmas.editar(turma.id)}">
+                          <button class="mb-2 mr-2 border-0 btn-transition btn btn-outline-danger">Editar</button></a>  
+						<a href="@{Turmas.deletar(turma.id)}">
+						<button class="mb-2 mr-2 border-0 btn-transition btn btn-outline-danger">Excluir</button></a> 
+						</td>
+                        </tr>
+                        #{/list}
+
+						#{else} 
+							Nenhuma turma cadastrada.
+						#{/else}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>

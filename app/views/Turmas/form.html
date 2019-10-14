@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+	<meta charset="utf-8">
+
+<h1>Formulário da Turma</h1>
+
+<form action="@{Turmas.salvar()}" method="post">
+	<div class="col-md-12 grid-margin stretch-card">
+     <div class="card">
+      <div class="card-body">
+       <h4 class="card-title">Preencha o formulário</h4>
+        <p class="card-description"> Com as seguintes informações:  </p>
+         <form class="forms-sample">
+          <div class="form-group">
+           <label for="exampleInputName1">Nome:</label>
+            <input type="text" class="form-control" name="turma.nome" value="${turma?.nome}"><br>
+           </div>
+                <button type="submit" class="btn btn-success mr-2">Cadastrar</button>
+                 <button class="btn btn-light">Cancelar</button>
+                </form>
+               </div>
+              </div>
+             </div>

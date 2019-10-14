@@ -1,0 +1,97 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<meta charset="utf-8">
+
+<h1>Detalhes da Turma</h1>
+<div class="main-panel">
+	<div class="content-wrapper">
+		<div class="row">
+			<div class="col-lg-12 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+				<h4 class="card-title"><b>Turma:</b> ${turma.nome}<br></h4>
+				<p class="card-description"> Alunos:</p>
+				<table class="table table-bordered">
+				<thead>
+            		<tr>
+             			<th></th>
+              			<th> Nome </th>
+            		</tr>
+          		</thead>
+          		<tbody>
+              		#{list items:turma.alunos, as: 'aluno'}
+                  		<tr class="table-success">
+                      		<td>#</td>
+                     		<td> ${aluno.nome}</td>
+                        </tr>
+             		#{/list}
+					#{else} 
+						Nenhum aluno cadastrado.
+					#{/else}
+            	</tbody>
+               	</table>	
+               	<br>
+               	<form action="@{Turmas.adicionarAluno()}" method="post">
+       				<h4 class="card-title">Adicionar aluno na turma:</h4>
+         				<form class="forms-sample">
+          					<div class="form-group">
+           						<label for="exampleInputName1">Nome:</label>
+            					<input type="hidden" name="turmaID" value="${turma.id}">
+								<select name="alunoID">  
+									#{list items:alunos, as: 'aluno'}
+										<option value="${aluno.id}">${aluno.nome}</option>
+									#{/list}
+								</select>
+           					</div>
+                 				<button type="submit" class="btn btn-success mr-2">Adicionar</button>
+                		</form>
+    				</div>
+      			</div>
+			</div>           
+   
+<div class="col-lg-12 grid-margin stretch-card">
+ 	<div class="card">
+ 		<div class="card-body">
+        	<h4 class="card-title"><b>Turma:</b> ${turma.nome}<br></h4>
+       		<p class="card-description"> Professores:</p>
+            <table class="table table-hover">
+           	<thead>
+          		<tr>
+               		<th></th>
+                 	<th>Nome</th>
+              	</tr>
+       		</thead>
+   			<tbody>
+     			#{list items:turma.professores, as: 'professor'}
+            		<tr class="table-success">
+              			<td>#</td>
+                       	<td>${professor.nome}</td>
+                  	</tr>
+              	#{/list}
+				#{else} 
+					Nenhum professor cadastrado.
+				#{/else}
+         	</tbody>
+      		</table>
+      		<br>
+      		<form action="@{Turmas.adicionarProfessor()}" method="post">
+       						<h4 class="card-title">Adicionar professor na turma:</h4>
+         					<form class="forms-sample">
+          						<div class="form-group">
+           							<label for="exampleInputName1">Nome:</label>
+            						<input type="hidden" name="turmaID" value="${turma.id}">
+									<select name="professorID">  
+										#{list items:professores, as: 'professor'}
+											<option value="${professor.id}">${professor.nome}</option>
+										#{/list}
+									</select>
+           						</div>
+                 					<button type="submit" class="btn btn-success mr-2">Adicionar</button>
+                			</form>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
